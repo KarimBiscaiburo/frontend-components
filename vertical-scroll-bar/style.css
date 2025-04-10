@@ -1,0 +1,125 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #404040;
+}
+
+
+/* --------------- Aca empiezan los estilos del los contenedores --------------- */
+
+.container {
+    height: 60%;
+    width: 95%;
+    max-width: 800px;
+    max-height: 700px;
+    background-color: rgb(51, 51, 51, 0.60);
+    border-radius: 25px;
+    box-shadow: 0 0 20px 2px #686262;
+    padding: 19px;
+    display: flex;
+}
+
+.container_properties {
+    height: 100%;
+    width: 100%;
+    margin-right: 12px;
+    overflow: hidden;
+}
+/* Selecciona los elementos impares */
+.property:nth-child(odd){
+    background-color: #0a4c62;
+}
+/* Selecciona los elementos pares */
+.property:nth-child(even){
+    background-color: #600a62;
+}
+.property {
+    height: 33%;
+}
+
+
+/* --------------- Barra de scroll --------------- */
+
+.container_scrollbar {
+    height: 100%;
+    width: 15px;
+    display: flex;
+    align-items: center;
+
+}
+.scrollbar_buttons_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+}
+
+/* --------------- Botónes --------------- */
+
+/* Botón por defecto */
+.scrollbar_button {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    background-color: rgba(255, 255, 255, 0.40);
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s all ease;
+}
+
+/* Botónes visibles */
+.scrollbar_button.active {
+    width: 15px;
+    height: 50px;
+    box-shadow: 0 0 4px 1px #000000;
+    background-color: rgba(255, 255, 255, 0.70);
+}
+.scrollbar_button.active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50px;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    /* forwards para que quede como termina */
+    animation: scrollbar_button_active 8s linear forwards;
+}
+.scrollbar_button.next {
+    width: 15px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.60);
+}
+.scrollbar_button.second {
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.50);
+}
+.scrollbar_button.active, .scrollbar_button.next, .scrollbar_button.second, .scrollbar_button.third {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+@keyframes scrollbar_button_active {
+    0% {
+        height: 15px;
+        width: 15px;
+    }
+    100% {
+        height: 100%;
+    }
+}
